@@ -1,0 +1,17 @@
+###consul服务端端口
+server:
+  port: 8002
+
+spring:
+  application:
+    # 便于以后其他消费者直接拿该服务名调用自己，好处在于消费者无需写死ip和port。
+    name: cloud-provider-goods
+  ####consul注册中心地址
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        #hostname: 127.0.0.1
+        # 注册进去的服务名称
+        service-name: ${spring.application.name}

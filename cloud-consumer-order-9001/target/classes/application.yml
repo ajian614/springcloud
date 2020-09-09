@@ -1,0 +1,24 @@
+###consul服务端端口
+server:
+  port: 9001
+
+spring:
+  application:
+    name: cloud-consumer-order-9001
+  ####consul注册中心地址
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        #hostname: 127.0.0.1
+        #服务被调用的服务名
+        service-name: cloud-consumer-order
+        # 开启健康检查（需要spring-boot-starter-actuator依赖）
+        register-health-check: true
+        # 健康检测的url，如果不配置，健康检测会失败
+        health-check-path: /actuator/health
+        # 健康检测时间间隔
+        health-check-interval: 15s
+        # 仅作为消费者, 不注册服务到注册中心（默认值为true）
+        register: false
