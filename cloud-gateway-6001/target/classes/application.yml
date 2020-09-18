@@ -1,0 +1,36 @@
+###consul服务端端口
+server:
+  port: 6001
+
+spring:
+  application:
+    name: cloud-gateway-6001
+  ####consul注册中心地址
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        #hostname: 127.0.0.1
+        service-name: cloud-gateway
+    gateway:
+      routes:
+        - id: gateway-service1 #我们自定义的路由 ID，保持唯一
+          # uri: http://localhost:8001 #目标服务地址
+
+          #这里所用的协议为lb,代表启动网关的负载均衡功能，
+          #该负载均衡地址是Gateway根据微服务名自动创建而来的
+          uri: lb://cloud-provider-goods
+          predicates:
+            - Path=/book/getBooks/** #断言，条件满足则路由跳转
+            - After=2020-09-16T10:05:23.650+08:00[Asia/Shanghai]
+            #- Header=abcd, \d+
+
+        - id: gateway-service2 #我们自定义的路由 ID，保持唯一
+          #uri: http://localhost:8001 #目标服务地址
+          uri: lb://cloud-provider-goods
+          predicates:
+            - Path=/book/getTests/** #断言，条件满足则路由跳转
+      discovery:
+        locator:
+          enabled: true  #开启从注册中心动态创建路由的功能，利用微服务名进行路由

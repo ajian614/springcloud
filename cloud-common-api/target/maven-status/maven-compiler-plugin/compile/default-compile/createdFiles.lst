@@ -1,2 +1,4 @@
 cn\bdqn\entity\Book.class
+cn\bdqn\factory\BookClientServiceFallbackFactory.class
+cn\bdqn\factory\BookClientServiceFallbackFactory$1.class
 cn\bdqn\service\BookClientService.class

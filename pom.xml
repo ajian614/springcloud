@@ -15,6 +15,11 @@
         <module>cloud-provider-goods-8002</module>
         <module>cloud-provider-goods-8003</module>
         <module>cloud-common-api</module>
+        <module>cloud-provider-goods-hystrix-8001</module>
+        <module>cloud-hystrix-dashboard-7001</module>
+        <module>cloud-gateway-6001</module>
+        <module>cloud-config-5001</module>
+        <module>cloud-config-client-5002</module>
     </modules>
 
     <name>microservices-cloud53</name>
@@ -45,7 +50,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR8</version>
+                <version>Hoxton.SR3</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

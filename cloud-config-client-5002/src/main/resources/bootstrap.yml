@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    config:
+      name: cloud-config-client # 需要从github上读取的资源名称，主要没有yml后缀名
+      profile: dev #本次访问的配置项
+      label: master # 远程分支
+      uri: http://127.0.0.1:5001 # 本微服务启动后先去找5001服务，通过SpringCloudConfig获取GitHub的服务地址
+# 暴露refresh 和 health 接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health

@@ -22,3 +22,7 @@ spring:
         health-check-interval: 15s
         # 仅作为消费者, 不注册服务到注册中心（默认值为true）
         register: false
+# 开启 feign的hystrix支持
+feign:
+  hystrix:
+    enabled: true
